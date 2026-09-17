@@ -77,6 +77,30 @@ if [[ "$ADMIN_PASSWORD" =~ [[:space:]] ]]; then
   exit 1
 fi
 
+# --- port check -------------------------------------------------------------
+if [[ ! "$PORT" =~ ^[0-9]+$ ]] || (( PORT < 1 || PORT > 65535 )); then
+  echo "error: invalid port '$PORT' (must be a number between 1 and 65535)" >&2
+  exit 1
+fi
+
+port_in_use() {
+  local p="$1"
+  if command -v ss >/dev/null 2>&1; then
+    ss -ltnH "sport = :$p" 2>/dev/null | grep -q .
+  elif command -v netstat >/dev/null 2>&1; then
+    netstat -ltn 2>/dev/null | awk '{print $4}' | grep -Eq "[:.]$p$"
+  else
+    echo "warning: 'ss' and 'netstat' not found; skipping port-in-use check" >&2
+    return 1
+  fi
+}
+
+if port_in_use "$PORT"; then
+  echo "error: port $PORT is already in use. Choose another with --port." >&2
+  echo "        (if reinstalling, stop the existing service first: systemctl stop $SERVICE_NAME)" >&2
+  exit 1
+fi
+
 # --- copy project ------------------------------------------------------------
 echo "==> Copying project to $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR/backend" "$INSTALL_DIR/frontend"
