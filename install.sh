@@ -11,7 +11,7 @@ set -euo pipefail
 #
 # Options:
 #   --dir <path>      Install directory      (default: /opt/web-directory)
-#   --port <port>     Service port           (default: 3100)
+#   --port <port>     Service port           (default: 8080)
 #   --password <pw>   Initial admin password (default: admin)
 #   --user <name>     Service user           (default: webdirectory)
 # ---------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Usage: sudo $0 [options]
 
 Options:
   --dir <path>      Install directory (default: /opt/web-directory)
-  --port <port>     Port the service listens on (default: 3100)
+  --port <port>     Port the service listens on (default: 8080)
   --password <pw>   Initial admin password (default: admin)
   --user <name>     System user that runs the service (default: webdirectory)
   -h, --help        Show this help
@@ -49,7 +49,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SRC_DIR="$(dirname "$SCRIPT_DIR")"
+SRC_DIR="$SCRIPT_DIR"
 
 # --- safety + preflight -----------------------------------------------------
 if [[ $EUID -ne 0 ]]; then
