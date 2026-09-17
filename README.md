@@ -23,10 +23,10 @@ sudo ./install.sh
 Options:
 
 ```bash
-sudo ./install.sh --dir /opt/web-directory --port 3100 --password mypassword --user webdirectory
+sudo ./install.sh --dir /opt/web-directory --port 8080 --password mypassword --user webdirectory
 ```
 
-The app is then available at `http://<device-ip>:3100` and restarts automatically on boot.
+The app is then available at `http://<device-ip>:8080` and restarts automatically on boot.
 
 ### Uninstall
 
