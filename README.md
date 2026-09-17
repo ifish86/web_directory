@@ -26,7 +26,7 @@ Options:
 sudo ./install.sh --dir /opt/web-directory --port 8080 --password mypassword --user webdirectory
 ```
 
-The app is then available at `http://<device-ip>:8080` and restarts automatically on boot.
+The app is then available at `http://<device-ip>:8080` and restarts automatically on boot. Ports below 1024 are supported — the service is granted `CAP_NET_BIND_SERVICE` so it can bind privileged ports as a non-root user.
 
 ### Uninstall
 

@@ -272,9 +272,13 @@ if (fs.existsSync(dist)) {
 function start() {
   const interval = Math.max(5000, Number(cfg.settings.scanIntervalMs) || 30000);
   setInterval(runScan, interval);
-  app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     console.log(`[portal-hub] listening on http://0.0.0.0:${PORT}`);
     console.log(`[portal-hub] admin password: ${cfg.isDefaultPassword ? 'admin (default - change it in the UI)' : '(set)'}`);
+  });
+  server.on('error', (err) => {
+    console.error(`[portal-hub] failed to listen on port ${PORT}: ${err.message}`);
+    process.exit(1);
   });
   runScan();
 }
