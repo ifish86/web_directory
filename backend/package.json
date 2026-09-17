@@ -1,0 +1,18 @@
+{
+  "name": "portal-hub-backend",
+  "version": "1.0.0",
+  "description": "Backend that discovers web interfaces running on this device",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

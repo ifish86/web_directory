@@ -1,0 +1,22 @@
+[Unit]
+Description=Web Directory - index of local web interfaces
+Documentation=https://github.com/ifish86/web_directory
+After=network.target
+
+[Service]
+Type=simple
+User=__USER__
+Group=__USER__
+WorkingDirectory=__INSTALL_DIR__/backend
+Environment=NODE_ENV=production
+Environment=PORTAL_PORT=__PORT__
+Environment=PORTAL_DATA_DIR=__INSTALL_DIR__/backend/data
+EnvironmentFile=-__INSTALL_DIR__/backend/data/service.env
+ExecStart=/usr/bin/env node server.js
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

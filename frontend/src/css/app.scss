@@ -1,0 +1,46 @@
+.index-page {
+  min-height: 100%;
+}
+
+.hero {
+  padding: 48px 16px 28px;
+  background: linear-gradient(135deg, #1976d2 0%, #26a69a 100%);
+  color: #fff;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.hero-sub {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.service-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+.empty-state {
+  padding: 64px 16px;
+}
+
+.config-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  margin-top: 40px;
+}
